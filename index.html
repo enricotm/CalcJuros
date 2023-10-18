@@ -13,12 +13,12 @@
 <body class="d-flex align-items-center justify-content-center">
     <div class="main">
         <div class="d-flex abas">
-            <button class="aba aba-selected" id="abaAmount" style="width: 27%">Amount</button>
-            <button class="aba" id="abaPrincipal" style="width: 27%">Principal</button>
-            <button class="aba" id="abaRate" style="width: 19%">Rate</button>
-            <button class="aba" id="abaMonths" style="width: 27%">Months</button>
+            <button class="aba aba-selected" id="aTab" style="width: 27%">Amount</button>
+            <button class="aba" id="pTab" style="width: 27%">Principal</button>
+            <button class="aba" id="rTab" style="width: 19%">Rate</button>
+            <button class="aba" id="mTab" style="width: 27%">Months</button>
         </div>
-        <div class="form">
+        <div class="forms">
             <div class="d-flex align-items-center" id="initialDiv">
                 <div class="d-flex input-group" id="initialGroup">
                     <span class="input-group-text">$</span>
@@ -30,31 +30,38 @@
                 </div>
             </div>
             <hr>
-            <div id="formAmount">
+            <div id="aForm">
                 <div class="d-flex input-group mb-3">
                     <span class="input-group-text">$</span>
-                    <input class="form-control" type="number" placeholder="Principal">
+                    <input class="form-control" type="number" placeholder="Principal" id="aPrincipal">
                     <span class="input-group-text">,00</span>
                 </div>
-                <div class="d-flex" style="justify-content: space-between; width: 100%">
+                <div class="d-flex" style="justify-content: space-between">
                     <div class="d-flex col-6 align-items-center">
-                        <input class="form-control" type="text">
+                        <input class="form-control" type="text" placeholder="Rate" id="aRate">
                         <div class="form-check ms-2">
-                            <input class="form-check-input" type="checkbox" value="perc1" id="perc1">
+                            <input class="form-check-input" type="checkbox" value="" id="aPerc">
                             <label class="form-check-label" for="flexRadioDefault1">%</label>
                         </div>
                         <div class="form-check ms-2">
-                            <input class="form-check-input" type="checkbox" value="aa1" id="aa1">
+                            <input class="form-check-input" type="checkbox" value="" id="aAA">
                             <label class="form-check-label" for="flexRadioDefault1">aa</label>
                         </div>
                     </div>
-                    <input class="form-control ms-1" type="text" placeholder="Years" style="width: 65px">
-                    <input class="form-control" type="text" placeholder="Months" style="width: 80px">
+                    <input class="form-control ms-1" type="text" placeholder="Years" id="aYears" style="width: 65px">
+                    <input class="form-control" type="text" placeholder="Months" id="aMonths" style="width: 80px">
                 </div>
             </div>
-            <div id="formPrincipal" hidden>Principal</div>
-            <div id="formRate" hidden>Rate</div>
-            <div id="formMonths" hidden>Months</div>
+            <div id="pForm" hidden>Principal</div>
+            <div id="rForm" hidden>Rate</div>
+            <div id="mForm" hidden>Months</div>
+            <div class="d-flex align-items-center mt-4 px-4" style="justify-content: space-between;">
+                <text class="textResult" id="aTextResult"></text>
+                <text class="textResult" id="pTextResult" hidden></text>
+                <text class="textResult" id="rTextResult" hidden></text>
+                <text class="textResult" id="mTextResult" hidden></text>
+                <button type="button" id="calcBtn">Calculate</button>
+            </div>
         </div>
     </div>
 
