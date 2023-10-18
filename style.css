@@ -6,7 +6,7 @@
 
 body {
     background-color: var(--second);
-    min-height: 100vh;
+    height: 100vh;
 }
 
 .main {
@@ -21,7 +21,7 @@ body {
 }
 
 .aba {
-    padding: 15px 20px;
+    padding: 15px 0px;
     background-color: transparent;
     border: none;
     border-top-left-radius: 10px;
@@ -39,6 +39,18 @@ body {
 
 .form {
     padding: 20px;
+}
+
+#initialDiv {
+    justify-content: space-between;
+}
+
+#initialGroup {
+    width: 80%;
+}
+
+#initialSwitch {
+    font-size: 20px;
 }
 
 hr {
