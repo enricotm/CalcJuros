@@ -10,10 +10,10 @@ body {
 }
 
 .main {
+    width: 380px;
     background-color: var(--main);
     /* border: 3px solid var(--main); */
     border-radius: 15px;
-    height: 600px;
 }
 
 .abas {
