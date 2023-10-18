@@ -5,8 +5,8 @@
 }
 
 body {
+    padding-top: 20px;
     background-color: var(--second);
-    height: 100vh;
 }
 
 .main {
