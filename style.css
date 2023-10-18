@@ -1,0 +1,46 @@
+:root {
+    --main: white;
+    --second: darkorchid;
+    --unselected: grey;
+}
+
+body {
+    background-color: var(--second);
+    min-height: 100vh;
+}
+
+.main {
+    background-color: var(--main);
+    /* border: 3px solid var(--main); */
+    border-radius: 15px;
+    height: 600px;
+}
+
+.abas {
+    background-color: var(--second);
+}
+
+.aba {
+    padding: 15px 20px;
+    background-color: transparent;
+    border: none;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    color: var(--main);
+    font-size: 16px;
+    font-weight: 700;
+    margin: auto;
+}
+
+.aba-selected {
+    background-color: var(--main);
+    color: var(--second);
+}
+
+.form {
+    padding: 20px;
+}
+
+hr {
+    color: var(--second);
+}
