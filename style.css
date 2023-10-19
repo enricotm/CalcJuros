@@ -43,6 +43,7 @@ body {
 #initialDiv { justify-content: space-between; }
 #initialGroup { width: 80%; }
 #initialSwitch { font-size: 20px; }
+#initialSwitch:checked { background-color: var(--second);}
 
 hr {
     color: var(--second);
