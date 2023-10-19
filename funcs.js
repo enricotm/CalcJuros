@@ -17,10 +17,15 @@ let rTextResult = document.getElementById("rTextResult");
 let mTextResult = document.getElementById("mTextResult");
 let activeTextResult = aTextResult;
 
+let forms = document.getElementById("forms");
+
 function changeTabs(tab, form, textResult) {
     activeTab.classList.remove("aba-selected");
     activeTab = tab;
     activeTab.classList.add("aba-selected");
+    console.log(forms.style)
+    activeTab.id == "aTab" ? forms.style.borderTopLeftRadius = "0px" : forms.style.borderTopLeftRadius = "15px";
+    activeTab.id == "mTab" ? forms.style.borderTopRightRadius = "0px" : forms.style.borderTopRightRadius = "15px";
 
     activeForm.toggleAttribute("hidden", true);
     activeForm = form;

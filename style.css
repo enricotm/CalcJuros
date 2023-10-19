@@ -10,9 +10,6 @@ body {
 
 .main {
     width: 380px;
-    background-color: var(--main);
-    /* border: 3px solid var(--main); */
-    border-radius: 15px;
 }
 
 .abas {
@@ -36,8 +33,11 @@ body {
     color: var(--second);
 }
 
-.forms {
+#forms {
     padding: 20px;
+    border-radius: 15px;
+    border-top-left-radius: 0px;
+    background-color: var(--main);
 }
 
 #initialDiv { justify-content: space-between; }
