@@ -76,18 +76,21 @@ function Continuous(amount, principal, rate, months, initial) {
         return (amount-initial*(1+rate)**months)*rate/(((1+rate)**months-1)*(1+rate));
     } else if (rate == null) {
         let minLimit = 0;
-        let maxLimit = 10;
+        let maxLimit = 0;
+        if (amount >= initial+principal*months) maxLimit = amount/(initial+principal*months);
+        else minLimit = -1;
         let result = 0;
         let crtAmount = 0;
         let tries = 0;
         while (crtAmount != amount) { 
             tries++;
-            if (tries > 1000) return NaN;
+            if (tries > 100) {console.log(result, tries); return NaN};
             result = (minLimit+maxLimit)/2;
             crtAmount = principal*(1+result)*(((1+result)**months-1)/result)+initial*(1+result)**months;
-            if (Math.abs(crtAmount - amount) <= 0.0001) break;
+            console.log(minLimit, maxLimit, result, crtAmount);
+            if (Math.abs(crtAmount - amount) <= 0.000001) {console.log(result, "yes", tries); break}
             else if (crtAmount > amount) maxLimit = result;
-            else if (crtAmount < amount) minLimit = result;
+            else minLimit = result;
         }
         return result;
     } else if (months == null) {
@@ -146,7 +149,7 @@ function getRate() {
     let months = parseFloat(document.getElementById("rMonths").value);
     // console.log(initial, amount, principal, years, months);
 
-    if (isNaN(amount) || isNaN(years) && isNaN(months)) return errorMessage;
+    if (isNaN(amount)  || isNaN(years) && isNaN(months)) return errorMessage;
 
     if (isNaN(initial)) initial = 0;
     if (isNaN(principal)) principal = 0;
@@ -156,7 +159,27 @@ function getRate() {
     let rate = Continuous(amount, principal, null, years*12+months, initial);
     if (isNaN(rate)) return errorMessage;
     let d = 10**3;
-    return Math.round(rate*100*d)/d+"% ("+Math.round(((rate+1)**12-1)*100*d)/d+"%aa)";
+    return Math.round(rate*100*d)/d+"%"+(Math.abs(rate)<1 ? " ("+Math.round(((rate+1)**12-1)*100*d)/d+"%aa)" : "");
+}
+
+function getMonths() {
+    let initial = initialInput.disabled ? NaN : parseFloat(initialInput.value);
+    let amount = parseFloat(document.getElementById("mAmount").value);
+    let principal = parseFloat(document.getElementById("mPrincipal").value);
+    let rate = parseFloat(document.getElementById("mRate").value);
+    let perc = document.getElementById("mPerc").checked;
+    let aa = document.getElementById("mAA").checked;
+    // console.log(initial, amount, principal, rate, perc, aa);
+
+    if (isNaN(amount) || isNaN(rate)) return errorMessage;
+
+    if (isNaN(initial)) initial = 0;
+    if (isNaN(years)) years = 0;
+    if (isNaN(months)) months = 0;
+
+    let months = Continuous(amount, null, calcRate(rate, perc, aa), years*12+months, initial);
+    if (isNaN(principal)) return errorMessage;
+    return "R$"+commas((Math.round(months*100)/100).toFixed(2));
 }
 
 // Calc Button
@@ -177,6 +200,8 @@ calcBtn.onclick = () => {
             sleep(80).then(() => rTextResult.textContent = getRate());
             break;
         case "mTab":
+            mTextResult.textContent = "";
+            sleep(80).then(() => mTextResult.textContent = getMonths());
             break;
     }
 }
