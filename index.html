@@ -75,7 +75,24 @@
                     <label class="form-label ms-1" for="pMonths" style="margin: auto 0px">Mths</label>
                 </div>
             </div>
-            <div id="rForm" hidden>Rate</div>
+            <div id="rForm" hidden>
+                <div class="d-flex mb-3">
+                    <div class="d-flex input-group">
+                        <span class="input-group-text">$</span>
+                        <input class="form-control" type="text" placeholder="Amount" id="rAmount">
+                    </div>
+                    <input class="form-control ms-2" type="text" id="rYears" style="width: 43px">
+                    <label class="form-label ms-2" for="rYears" style="margin: auto 0px">Yrs</label>
+                </div>
+                <div class="d-flex mb-3">
+                    <div class="d-flex input-group">
+                        <span class="input-group-text">$</span>
+                        <input class="form-control" type="text" placeholder="Principal" id="rPrincipal">
+                    </div>
+                    <input class="form-control ms-2" type="text" id="rMonths" style="width: 43px">
+                    <label class="form-label ms-2" for="rMonths" style="margin: auto 0px">Mths</label>
+                </div>
+            </div>
             <div id="mForm" hidden>Months</div>
             <div class="d-flex align-items-center mt-4 px-4" style="justify-content: space-between;">
                 <text class="textResult" id="aTextResult"></text>
