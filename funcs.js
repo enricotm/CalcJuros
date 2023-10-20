@@ -84,17 +84,19 @@ function Continuous(amount, principal, rate, months, initial) {
         let tries = 0;
         while (crtAmount != amount) { 
             tries++;
-            if (tries > 100) {console.log(result, tries); return NaN};
+            if (tries > 100) return NaN;
             result = (minLimit+maxLimit)/2;
             crtAmount = principal*(1+result)*(((1+result)**months-1)/result)+initial*(1+result)**months;
-            console.log(minLimit, maxLimit, result, crtAmount);
+            // console.log(minLimit, maxLimit, result, crtAmount);
             if (Math.abs(crtAmount - amount) <= 0.000001) {console.log(result, "yes", tries); break}
             else if (crtAmount > amount) maxLimit = result;
             else minLimit = result;
         }
         return result;
     } else if (months == null) {
-
+        return Math.log((amount+principal+principal/rate)/(initial+principal+principal/rate))/Math.log(1+rate);
+        // Another option, same result:
+        // return Math.log((rate*(amount+principal)+principal)/(rate*(initial+principal)+principal))/Math.log(1+rate);
     }
 }
 
@@ -149,7 +151,7 @@ function getRate() {
     let months = parseFloat(document.getElementById("rMonths").value);
     // console.log(initial, amount, principal, years, months);
 
-    if (isNaN(amount)  || isNaN(years) && isNaN(months)) return errorMessage;
+    if (isNaN(amount) || isNaN(initial) && isNaN(principal) || isNaN(years) && isNaN(months)) return errorMessage;
 
     if (isNaN(initial)) initial = 0;
     if (isNaN(principal)) principal = 0;
@@ -171,15 +173,14 @@ function getMonths() {
     let aa = document.getElementById("mAA").checked;
     // console.log(initial, amount, principal, rate, perc, aa);
 
-    if (isNaN(amount) || isNaN(rate)) return errorMessage;
+    if (isNaN(amount) || isNaN(initial) && isNaN(principal) || isNaN(rate)) return errorMessage;
 
     if (isNaN(initial)) initial = 0;
-    if (isNaN(years)) years = 0;
-    if (isNaN(months)) months = 0;
+    if (isNaN(principal)) principal = 0;
 
-    let months = Continuous(amount, null, calcRate(rate, perc, aa), years*12+months, initial);
+    let months = Continuous(amount, principal, calcRate(rate, perc, aa), null, initial);
     if (isNaN(principal)) return errorMessage;
-    return "R$"+commas((Math.round(months*100)/100).toFixed(2));
+    return Math.round(months*100)/100+" Mos ("+Math.round(months/12*100)/100+" Yrs)";
 }
 
 // Calc Button
