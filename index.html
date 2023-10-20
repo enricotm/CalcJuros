@@ -30,13 +30,17 @@
             </div>
             <hr>
             <div id="aForm">
-                <div class="d-flex input-group mb-3">
-                    <span class="input-group-text">$</span>
-                    <input class="form-control" type="text" placeholder="Principal" id="aPrincipal">
+                <div class="d-flex mb-3">
+                    <div class="d-flex input-group">
+                        <span class="input-group-text">$</span>
+                        <input class="form-control" type="text" placeholder="Principal" id="aPrincipal">
+                    </div>
+                    <input class="form-control ms-3" type="text" id="aYears" style="width: 51px">
+                    <label class="form-label ms-2" for="aYears" style="margin: auto 0px">Years</label>
                 </div>
                 <div class="d-flex" style="justify-content: space-between">
-                    <div class="d-flex col-6 align-items-center">
-                        <input class="form-control" type="text" placeholder="Rate" id="aRate" style="width: 72px">
+                    <div class="d-flex align-items-center">
+                        <input class="form-control" type="text" placeholder="Rate" id="aRate">
                         <div class="form-check ms-2">
                             <input class="form-check-input" type="checkbox" value="" id="aPerc">
                             <label class="form-check-label" for="aPerc">%</label>
@@ -46,20 +50,24 @@
                             <label class="form-check-label" for="aAA">aa</label>
                         </div>
                     </div>
-                    <input class="form-control ms-1" type="text" id="aYears" style="width: 43px">
-                    <label class="form-label ms-1" for="aYears" style="margin: auto 0px">Yrs</label>
-                    <input class="form-control ms-1" type="text" id="aMonths" style="width: 43px">
-                    <label class="form-label ms-1" for="aMonths" style="margin: auto 0px">Mths</label>
+                    <div class="d-flex ms-3">
+                        <input class="form-control" type="text" id="aMonths" style="width: 51px">
+                        <label class="form-label ms-2" for="aMonths" style="margin: auto 0px">Months</label>
+                    </div>
                 </div>
             </div>
             <div id="pForm" hidden>
-                <div class="d-flex input-group mb-3">
-                    <span class="input-group-text">$</span>
-                    <input class="form-control" type="text" placeholder="Amount" id="pAmount">
+                <div class="d-flex mb-3">
+                    <div class="d-flex input-group">
+                        <span class="input-group-text">$</span>
+                        <input class="form-control" type="text" placeholder="Amount" id="pAmount">
+                    </div>
+                    <input class="form-control ms-3" type="text" id="pYears" style="width: 51px">
+                    <label class="form-label ms-2" for="pYears" style="margin: auto 0px">Years</label>
                 </div>
                 <div class="d-flex" style="justify-content: space-between">
-                    <div class="d-flex col-6 align-items-center">
-                        <input class="form-control" type="text" placeholder="Rate" id="pRate" style="width: 72px">
+                    <div class="d-flex align-items-center">
+                        <input class="form-control" type="text" placeholder="Rate" id="pRate">
                         <div class="form-check ms-2">
                             <input class="form-check-input" type="checkbox" value="" id="pPerc">
                             <label class="form-check-label" for="pPerc">%</label>
@@ -69,10 +77,10 @@
                             <label class="form-check-label" for="pAA">aa</label>
                         </div>
                     </div>
-                    <input class="form-control ms-1" type="text" id="pYears" style="width: 43px">
-                    <label class="form-label ms-1" for="pYears" style="margin: auto 0px">Yrs</label>
-                    <input class="form-control ms-1" type="text" id="pMonths" style="width: 43px">
-                    <label class="form-label ms-1" for="pMonths" style="margin: auto 0px">Mths</label>
+                    <div class="d-flex ms-3">
+                        <input class="form-control" type="text" id="pMonths" style="width: 51px">
+                        <label class="form-label ms-2" for="pMonths" style="margin: auto 0px">Months</label>
+                    </div>
                 </div>
             </div>
             <div id="rForm" hidden>
@@ -81,19 +89,41 @@
                         <span class="input-group-text">$</span>
                         <input class="form-control" type="text" placeholder="Amount" id="rAmount">
                     </div>
-                    <input class="form-control ms-2" type="text" id="rYears" style="width: 43px">
-                    <label class="form-label ms-2" for="rYears" style="margin: auto 0px">Yrs</label>
+                    <input class="form-control ms-3" type="text" id="rYears" style="width: 51px">
+                    <label class="form-label ms-2" for="rYears" style="margin: auto 0px">Years</label>
                 </div>
                 <div class="d-flex mb-3">
                     <div class="d-flex input-group">
                         <span class="input-group-text">$</span>
                         <input class="form-control" type="text" placeholder="Principal" id="rPrincipal">
                     </div>
-                    <input class="form-control ms-2" type="text" id="rMonths" style="width: 43px">
-                    <label class="form-label ms-2" for="rMonths" style="margin: auto 0px">Mths</label>
+                    <input class="form-control ms-3" type="text" id="rMonths" style="width: 51px">
+                    <label class="form-label ms-2" for="rMonths" style="margin: auto 0px">Months</label>
                 </div>
             </div>
-            <div id="mForm" hidden>Months</div>
+            <div id="mForm" hidden>
+                <div class="d-flex align-items-end mb-3">
+                    <div class="d-flex input-group">
+                        <span class="input-group-text">$</span>
+                        <input class="form-control" type="text" placeholder="Amount" id="mAmount">
+                    </div>
+                    <div class="form-check ms-3">
+                        <input class="form-check-input" type="checkbox" value="" id="mPerc">
+                        <label class="form-check-label" for="mPerc">%</label>
+                    </div>
+                    <div class="form-check ms-2">
+                        <input class="form-check-input" type="checkbox" value="" id="mAA">
+                        <label class="form-check-label" for="mAA">aa</label>
+                    </div>
+                </div>
+                <div class="d-flex">
+                    <div class="d-flex input-group">
+                        <span class="input-group-text">$</span>
+                        <input class="form-control" type="text" placeholder="Principal" id="mPrincipal">
+                    </div>
+                    <input class="form-control ms-3" type="text" placeholder="Rate" id="mRate" style="width: 113px">
+                </div>
+            </div>
             <div class="d-flex align-items-center mt-4 px-4" style="justify-content: space-between;">
                 <text class="textResult" id="aTextResult"></text>
                 <text class="textResult" id="pTextResult" hidden></text>
