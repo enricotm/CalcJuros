@@ -49,6 +49,14 @@ hr {
     color: var(--second);
 }
 
+.period {
+    width: 51px;
+}
+
+.periodLabel {
+    margin: auto 0px;
+}
+
 .textResult {
     color: var(--second);
     font-size: 20px;
