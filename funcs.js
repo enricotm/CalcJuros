@@ -92,19 +92,6 @@ aAddBtn.onclick = () => {
     setInput("aAA", "aAAL");
     setInput("aYears", "aYearsL");
     setInput("aMonths", "aMonthsL");
-    // document.getElementsByName("aPrincipal")[aFormValue-1].id = "aPrincipal"+aFormValue;
-    // document.getElementsByName("aPrincipal")[aFormValue-1].value = null;
-    // document.getElementsByName("aRate")[aFormValue-1].id = "aRate"+aFormValue;
-    // document.getElementsByName("aRate")[aFormValue-1].value = null;
-    // document.getElementsByName("aPerc")[aFormValue-1].id = "aPerc"+aFormValue;
-    // document.getElementsByName("aPerc")[aFormValue-1].value = null;
-    // document.getElementsByName("aPercL")[aFormValue-1].setAttribute("for", "aPerc"+aFormValue);
-    // document.getElementsByName("aAA")[aFormValue-1].id = "aAA"+aFormValue;
-    // document.getElementsByName("aAAL")[aFormValue-1].setAttribute("for", "aAA"+aFormValue);
-    // document.getElementsByName("aYears")[aFormValue-1].id = "aYears"+aFormValue;
-    // document.getElementsByName("aYearsL")[aFormValue-1].setAttribute("for", "aYears"+aFormValue);
-    // document.getElementsByName("aMonths")[aFormValue-1].id = "aMonths"+aFormValue;
-    // document.getElementsByName("aMonthsL")[aFormValue-1].setAttribute("for", "aMonths"+aFormValue);
 }
 
 // Calc proper rate
