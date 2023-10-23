@@ -148,7 +148,6 @@ function Continuous(amount, principal, rate, months, initial) {
 function getAmount() {
     let initial = initialInput.disabled ? NaN : parseFloat(initialInput.value);
     for (let i=1;i<=aFormValue;i++) {
-        console.log(i)
         let principal = parseFloat(document.getElementById("aPrincipal"+i).value);
         let rate = parseFloat(document.getElementById("aRate"+i).value);
         let perc = document.getElementById("aPerc"+i).checked;
