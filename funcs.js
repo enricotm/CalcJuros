@@ -49,6 +49,64 @@ let initialInput = document.getElementById("initialInput");
 
 switchInitial.onchange = () => initialInput.toggleAttribute("disabled");
 
+// Add amount div
+let aForms = document.getElementById("aForms");
+let aForm1 = document.getElementById("aForm1");
+let aRemoveBtn = document.getElementById("aRemoveBtn");
+let aAddBtn = document.getElementById("aAddBtn");
+let aFormValue = 1;
+
+aRemoveBtn.onclick = () => {
+    aFormValue--;
+    if (aFormValue == 1) {
+        aRemoveBtn.classList.add("aBtn-disabled");
+        aRemoveBtn.toggleAttribute("disabled", true);
+    }
+
+    aForms.removeChild(aForms.lastChild);
+    aForms.removeChild(aForms.lastChild);
+}
+
+aAddBtn.onclick = () => {
+    aFormValue++;
+    if (aFormValue == 2) {
+        aRemoveBtn.classList.remove("aBtn-disabled");
+        aRemoveBtn.toggleAttribute("disabled", false);
+    }
+
+    function setInput(name, label) {
+        let input = document.getElementsByName(name)[aFormValue-1];
+        input.id = name+aFormValue;
+        input.value = null;
+        input.checked = false;
+        if (label) document.getElementsByName(label)[aFormValue-1].setAttribute("for", name+aFormValue);
+    }
+
+    let aNewForm = aForm1.cloneNode(true);
+    aNewForm.id = "aForm"+aFormValue;
+    aForms.appendChild(document.createElement("hr"))
+    aForms.appendChild(aNewForm);
+    setInput("aPrincipal", null);
+    setInput("aRate", null);
+    setInput("aPerc", "aPercL");
+    setInput("aAA", "aAAL");
+    setInput("aYears", "aYearsL");
+    setInput("aMonths", "aMonthsL");
+    // document.getElementsByName("aPrincipal")[aFormValue-1].id = "aPrincipal"+aFormValue;
+    // document.getElementsByName("aPrincipal")[aFormValue-1].value = null;
+    // document.getElementsByName("aRate")[aFormValue-1].id = "aRate"+aFormValue;
+    // document.getElementsByName("aRate")[aFormValue-1].value = null;
+    // document.getElementsByName("aPerc")[aFormValue-1].id = "aPerc"+aFormValue;
+    // document.getElementsByName("aPerc")[aFormValue-1].value = null;
+    // document.getElementsByName("aPercL")[aFormValue-1].setAttribute("for", "aPerc"+aFormValue);
+    // document.getElementsByName("aAA")[aFormValue-1].id = "aAA"+aFormValue;
+    // document.getElementsByName("aAAL")[aFormValue-1].setAttribute("for", "aAA"+aFormValue);
+    // document.getElementsByName("aYears")[aFormValue-1].id = "aYears"+aFormValue;
+    // document.getElementsByName("aYearsL")[aFormValue-1].setAttribute("for", "aYears"+aFormValue);
+    // document.getElementsByName("aMonths")[aFormValue-1].id = "aMonths"+aFormValue;
+    // document.getElementsByName("aMonthsL")[aFormValue-1].setAttribute("for", "aMonths"+aFormValue);
+}
+
 // Calc proper rate
 function calcRate(rate, perc, aa) {
     if (perc) rate = rate/100;
@@ -102,24 +160,27 @@ function Continuous(amount, principal, rate, months, initial) {
 
 function getAmount() {
     let initial = initialInput.disabled ? NaN : parseFloat(initialInput.value);
-    let principal = parseFloat(document.getElementById("aPrincipal").value);
-    let rate = parseFloat(document.getElementById("aRate").value);
-    let perc = document.getElementById("aPerc").checked;
-    let aa = document.getElementById("aAA").checked;
-    let years = parseFloat(document.getElementById("aYears").value);
-    let months = parseFloat(document.getElementById("aMonths").value);
-    // console.log(initial, principal, rate, perc, aa, years, months);
-
-    if (isNaN(initial) && isNaN(principal) || isNaN(rate) || isNaN(years) && isNaN(months)) return errorMessage;
-
-    if (isNaN(initial)) initial = 0;
-    if (isNaN(principal)) principal = 0;
-    if (isNaN(years)) years = 0;
-    if (isNaN(months)) months = 0;
-
-    let amount = Continuous(null, principal, calcRate(rate, perc, aa), years*12+months, initial);
-    if (isNaN(amount)) return errorMessage;
-    return "R$"+commas((Math.round(amount*100)/100).toFixed(2));
+    for (let i=1;i<=aFormValue;i++) {
+        console.log(i)
+        let principal = parseFloat(document.getElementById("aPrincipal"+i).value);
+        let rate = parseFloat(document.getElementById("aRate"+i).value);
+        let perc = document.getElementById("aPerc"+i).checked;
+        let aa = document.getElementById("aAA"+i).checked;
+        let years = parseFloat(document.getElementById("aYears"+i).value);
+        let months = parseFloat(document.getElementById("aMonths"+i).value);
+        // console.log(initial, principal, rate, perc, aa, years, months);
+    
+        if (isNaN(initial) && isNaN(principal) || isNaN(rate) || isNaN(years) && isNaN(months)) return errorMessage;
+    
+        if (isNaN(initial)) initial = 0;
+        if (isNaN(principal)) principal = 0;
+        if (isNaN(years)) years = 0;
+        if (isNaN(months)) months = 0;
+    
+        initial = Continuous(null, principal, calcRate(rate, perc, aa), years*12+months, initial);
+        if (isNaN(initial)) return errorMessage;
+    }
+    return "R$"+commas((Math.round(initial*100)/100).toFixed(2));
 }
 
 function getPrincipal() {

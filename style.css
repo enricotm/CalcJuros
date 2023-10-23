@@ -71,3 +71,18 @@ hr {
     padding: 5px 15px;
     font-weight: 600;
 }
+
+.aBtn {
+    color: var(--main);
+    background-color: var(--second);
+    border: none;
+    border-radius: 100px;
+    width: 30px;
+    font-size: 18px;
+    font-weight: 700;
+    padding-bottom: 2px;
+}
+
+.aBtn-disabled {
+    background-color: grey;
+}
